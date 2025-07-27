@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🎁</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: background 0.5s;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    #mainText {
+      font-size: 2em;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    #mainButton {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffffff;
+      color: #eb4848;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #mainButton:hover {
+      background-color: #ff6b6b;
+      color: #fff;
+    }
+
+    #finalMessage {
+      font-size: 2em;
+      color: #fff;
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    #gambar {
+      background-size: 200px 200px;
+      background-position-x: center;
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="mainText">Hai, kamu siap?</div>
+    <button id="mainButton" onclick="nextStep()">Tekan!</button>
+    <div id="finalMessage">🎉 Selamat yang ke 18 abad! Semoga selalu bahagia dan sukses ya! 🎂</div>
+    <div id="gambar"><img src="gambar/kucing6.jpg" alt="11"></div>
+    <audio id="bgMusic" src="audio.mp3"></audio>
+  </div>
+ 
+  <script>
+    const texts = [
+      "Yakin? ",
+      "Beneran?",
+      "serius?",
+      "serius sekali?!!!",
+      "Oke deh! Ini dia 🎉"
+    ];
+
+    const buttons = [
+      "lagi",
+      "terus",
+      "terus",
+      "terus",
+      "Tunjukkan!"
+    ];
+
+    let index = 0;
+
+    function nextStep() {
+      if (index < texts.length - 1) {
+        document.getElementById("mainText").textContent = texts[index];
+        document.getElementById("mainButton").textContent = buttons[index];
+        index++;
+      } else {
+        // Ganti ke ucapan ulang tahun + musik
+        document.getElementById("mainText").style.display = "none";
+        document.getElementById("mainButton").style.display = "none";
+        document.body.style.background = "linear-gradient(to right, #a18cd1, #fbc2eb)";
+        document.getElementById("finalMessage").style.display = "block";
+        document.getElementById("gambar").style.display = "block";
+
+        // Putar musik
+        const music = document.getElementById("bgMusic");
+        music.play();
+      }
+    }
+  </script>
+
+</body>
+</html>
